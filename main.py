@@ -5,12 +5,15 @@ from functions import *
 # passing_score = int(input('Enter the percentage of correct answers needed to pass (int): '))
 
 n_questions = 10
-n_answers = 3
+n_answers = 4
 passing_score = 40
 
 answers = ['a','b','c','d','e']
 answers = answers[:n_answers]
 
-distribution = [1,2,3]
+distribution = [2,1,0,1]
 
-print(initial_answer(answers, distribution))
+initial_answer = initial_answer(answers, distribution)
+
+
+print(search_answer(initial_answer,passing_score,distribution,answers))
