@@ -1,6 +1,8 @@
-def check_score(score, passing_score):
+def check_score(score, passing_score, record):
     if score >= passing_score:
         print('Passing score reached!')
+        for r in record:
+            print(r)
         quit()
     else:
         pass
@@ -27,9 +29,11 @@ def search_answer(initial_answer,passing_score,distribution,answers):
     answer = list([[i,'undefined'] for i in initial_answer])
     order = list(i[0] for i in answer)
     cycle = answers + answers
+    record = []
 
     last_score = int(input(f'Enter the percentage of correct answers, using the following order \'{order}\': '))
-    check_score(last_score, passing_score)
+    check_score(last_score, passing_score,record)
+    record.append((str(answer), last_score))
 
     answer[position][0] = cycle[cycle.index(answer[position][0]) + 1]
 
@@ -37,23 +41,26 @@ def search_answer(initial_answer,passing_score,distribution,answers):
 
         order = list(i[0] for i in answer)
         new_score = int(input(f'Enter the percentage of correct answers, using the following order \'{order}\': '))
-        check_score(new_score, passing_score)
+        check_score(new_score, passing_score, record)
 
         if last_score < new_score:
             answer[position][1] = 'correct'
             position += 1
             answer[position][0] = cycle[cycle.index(answer[position][0]) + 1]
             last_score = new_score
+            record.append((str(answer), last_score))
 
         elif last_score > new_score:
             answer[position][1] = 'correct'
             answer[position][0] = cycle[cycle.index(answer[position][0]) - 1]
             position += 1
             last_score = new_score
+            record.append((str(answer), last_score))
 
         elif last_score == new_score:
             answer[position][0] = cycle[cycle.index(answer[position][0]) + 1]
             last_score = new_score
+            record.append((str(answer), last_score))
 
         
         

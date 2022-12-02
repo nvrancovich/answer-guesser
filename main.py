@@ -7,9 +7,9 @@ os.system('clear')
 # n_answers = int(input('Enter the number of possible answers per question (int): '))
 # passing_score = int(input('Enter the percentage of correct answers needed to pass (int): '))
 
-n_questions = 10
-n_answers = 4
-passing_score = 70
+n_questions = 4
+n_answers = 3
+passing_score = 75
 
 answers = ['a','b','c','d','e']
 answers = answers[:n_answers]
