@@ -14,7 +14,7 @@ passing_score = 75
 answers = ['a','b','c','d','e']
 answers = answers[:n_answers]
 
-distribution = check_distribution(answers, n_questions)
+distribution = set_distribution(answers, n_questions)
 
 print(distribution)
 
